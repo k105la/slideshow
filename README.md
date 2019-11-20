@@ -6,7 +6,7 @@ a folder and displays them in a slideshow.
 
 ## Installation/Setup
 
-1. `git clone https://github.com/akilhylton/slideshow`
+1. `git clone https://github.com/akilhylton/slideshow.git`
 
 2. `cd slideshow`
 
