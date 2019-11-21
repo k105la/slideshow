@@ -1,0 +1,18 @@
+#!/bin/bash
+
+sleep 10 # Wait for USB drive to mount
+
+sudo mkdir /media/usb
+sudo mount /dev/sdb1 /media/usb
+
+cd ~/Desktop
+
+# Run C program that copies images into new folder.
+./slideshow/movefromusb
+
+sudo umount /media/dev
+sudo rmdir ~/media/usb
+echo USB folder has been removed
+
+# Run eog command to start slideshow
+eog --slide-show ~/Desktop/pictures
