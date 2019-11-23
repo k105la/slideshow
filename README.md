@@ -7,6 +7,8 @@ a folder and displays them in a slideshow.
 ## Installation/Setup
 
 1. `git clone https://github.com/akilhylton/slideshow.git`
+	* `sudo chmod 755 requirements.sh`
+	* `./requirements.sh`
 
 2. `mkdir ~/Desktop/pictures`
 
@@ -24,12 +26,8 @@ a folder and displays them in a slideshow.
 
 ## Add bash script to run on RaspberryPi start up
 
-1. `cd ~/`
-
-Open rc.local file.
+1. `cd ~/` (Goes to home directory)
 
 2. `sudo nano /etc/rc.local`
 
-Copy and paste this line into rc.local file.
-
-3. `~/slideshow/slideshow`
+3. `~/slideshow/slideshow` (Copy and paste this line into rc.local file))
