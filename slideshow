@@ -1,18 +1,36 @@
 #!/bin/bash
 
-sleep 10 # Wait for USB drive to mount
+USB_UUID=replace_with_uuid
+sleep 5 # Wait for USB drive to mount
 
-sudo mkdir /media/usb
-sudo mount /dev/sdb1 /media/usb
+cd ~/
 
-cd ~/Desktop
+# check if ~/usb_drive exist 
+if [ -d ~/usb_drive ] 
+then
+	# mounts usb drive
+	sudo mount --uuid $USB_UUID ~/usb_drive
 
-# Run C program that copies images into new folder.
-./slideshow/movefromusb
+	# copies images into new folder
+	sudo mv ~/usb_drive/usb/*.jpg ~/Desktop/pictures 
+	echo Images have been copied from usb drive to ~/Desktop/pictures
 
-sudo umount /media/dev
-sudo rmdir ~/media/usb
-echo USB folder has been removed
+	# Run eog command to start slideshow
+	eog --slide-show ~/Desktop/pictures
+        
+	sudo umount ~/usb_drive
+	echo usb drive has been unmounted!
+else
+	# else if usb drive does not exist
+	sudo mkdir ~/usb_drive
+        echo ~/usb_drive directory has been made!
 
-# Run eog command to start slideshow
-eog --slide-show ~/Desktop/pictures
+	sudo mount --uuid $USB_UUID ~/usb_drive
+	sudo mv ~/usb_drive/usb/*.jpg ~/Desktop/pictures
+
+	eog --slide-show ~/Desktop/pictures
+	
+	sudo umount ~/usb_drive
+	echo usb drive has been unmounted!
+fi
+
