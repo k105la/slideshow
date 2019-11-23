@@ -1,8 +1,7 @@
 # RaspberryPi Slideshow Bash Script
 
 A small bash script that takes JPG pictures from a USB drive and stores them in
-a folder and displays them in a slideshow. 
-
+a folder and displays them in a slideshow. **RaspberryPi operating system must be running Raspbian with desktop.**
 
 ## Installation/Setup
 
@@ -14,14 +13,12 @@ a folder and displays them in a slideshow.
 2. `mkdir ~/Desktop/pictures`
 
 3. `cd ~/slideshow`
-	### Accuring USB Device's UUID
-	* `sudo blkid -sUUID`
+	### Find USB Device's UUID
+	* `sudo blkid -sUUID` (remember to have usb drive plugged in)
 	
-	* Enter your usb device's uuid in the `UUID=` variable in the slideshow bash file.
-
 4. `chmod 755 slideshow`
 
-5. `./slideshow` (quick test remember to have a usb drive with pictures stored in a folder named **usb** plug into RaspberryPi)
+5. `./slideshow` (quick test remember to have a usb drive with pictures stored in a folder named **usb** plugged into the RaspberryPi)
 
 
 ## Add bash script to run on RaspberryPi start up
