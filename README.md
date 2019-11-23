@@ -1,8 +1,7 @@
 # RaspberryPi Slideshow Bash Script
 
 A small bash script that takes JPG pictures from a USB drive and stores them in
-a folder and displays them in a slideshow. 
-
+a folder and displays them in a slideshow. **RaspberryPi operating system must be running Raspbian with desktop.**
 
 ## Installation/Setup
 
