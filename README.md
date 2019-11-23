@@ -15,10 +15,12 @@ a folder and displays them in a slideshow. **RaspberryPi operating system must b
 3. `cd ~/slideshow`
 	### Find USB Device's UUID
 	* `sudo blkid -sUUID` (remember to have usb drive plugged in)
-	
+
 4. `chmod 755 slideshow`
 
 5. `./slideshow` (quick test remember to have a usb drive with pictures stored in a folder named **usb** plugged into the RaspberryPi)
+
+![](uuid_menu.png)
 
 
 ## Add bash script to run on RaspberryPi start up
