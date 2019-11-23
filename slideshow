@@ -1,15 +1,29 @@
 #!/bin/bash
 
-USB_UUID=replace_with_uuid
-sleep 5 # Wait for USB drive to mount
-
 cd ~/
+
+echo "Select USB Drive's UUID"
+blkid -s UUID -o value > uuid_scan_results.txt 
+UUID_FILE=$(cat uuid_scan_results.txt)
+i=1
+
+for j in $UUID_FILE
+do
+	echo "$i) $j"
+	uuid[i]=$j
+	i=$(( i + 1 ))
+done
+ 
+read -p "Enter number: " input
+echo "You select the UUID: ${uuid[$input]}"
+
+sleep 10 # Wait for USB drive to mount
 
 # check if ~/usb_drive exist 
 if [ -d ~/usb_drive ] 
 then
 	# mounts usb drive
-	sudo mount --uuid $USB_UUID ~/usb_drive
+	sudo mount --uuid ${uuid[$input]} ~/usb_drive
 
 	# copies images into new folder
 	sudo mv ~/usb_drive/usb/*.jpg ~/Desktop/pictures 
@@ -25,7 +39,7 @@ else
 	sudo mkdir ~/usb_drive
         echo ~/usb_drive directory has been made!
 
-	sudo mount --uuid $USB_UUID ~/usb_drive
+	sudo mount --uuid ${uuid[$input]} ~/usb_drive
 	sudo mv ~/usb_drive/usb/*.jpg ~/Desktop/pictures
 
 	eog --slide-show ~/Desktop/pictures
@@ -33,4 +47,3 @@ else
 	sudo umount ~/usb_drive
 	echo usb drive has been unmounted!
 fi
-
