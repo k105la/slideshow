@@ -8,26 +8,26 @@ a folder and displays them in a slideshow.
 
 1. `git clone https://github.com/akilhylton/slideshow.git`
 	* `sudo chmod 755 requirements.sh`
+	
 	* `./requirements.sh`
 
 2. `mkdir ~/Desktop/pictures`
 
 3. `cd ~/slideshow`
+	### Accuring USB Device's UUID
+	* `sudo blkid -sUUID`
+	
+	* Enter your usb device's uuid in the `UUID=` variable in the slideshow bash file.
 
 4. `chmod 755 slideshow`
 
-
-## Accuring USB Device's UUID
-
-1. `sudo blkid -sUUID`
-
-2. Enter your usb device's uuid in the `UUID=` variable in the slideshow bash file.  
+5. `./slideshow` (quick test remember to have a usb drive with pictures stored in a folder named **usb** plug into RaspberryPi)
 
 
 ## Add bash script to run on RaspberryPi start up
 
-1. `cd ~/` (Goes to home directory)
+1. `cd ~/` (goes to home directory)
 
 2. `sudo nano /etc/rc.local`
 
-3. `~/slideshow/slideshow` (Copy and paste this line into rc.local file))
+3. `~/slideshow/slideshow` (copy and paste this line into rc.local file)
