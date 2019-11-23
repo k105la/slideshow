@@ -8,26 +8,28 @@ a folder and displays them in a slideshow.
 
 1. `git clone https://github.com/akilhylton/slideshow.git`
 
-2. `cd slideshow`
+2. `mkdir ~/Desktop/pictures`
 
-3. `chmod 755 slideshow`
+3. `cd ~/slideshow`
 
-## Enable passwordless sudo
+4. `chmod 755 slideshow`
 
-1. `sudo nano /etc/sudoers`
 
-Copy and paste this into sudoers file.
-2. `pi ALL=(ALL:ALL) NOPASSWD:ALL`
+## Accuring USB Device's UUID
 
-Restart system.
-3. `sudo reboot`
+1. `sudo blkid -sUUID`
+
+2. Enter your usb device's uuid in the `UUID=` variable in the slideshow bash file.  
+
 
 ## Add bash script to run on RaspberryPi start up
 
 1. `cd ~/`
 
 Open rc.local file.
+
 2. `sudo nano /etc/rc.local`
 
 Copy and paste this line into rc.local file.
-3. `./slideshow/slideshow`
+
+3. `~/slideshow/slideshow`
