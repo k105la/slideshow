@@ -23,10 +23,12 @@ a folder and displays them in a slideshow. **RaspberryPi operating system must b
 ![](docs/static_imgs/uuid_menu.png)
 
 
-## Add bash script to run on RaspberryPi start up
+## Run bash script on RaspberryPi start up
 
 1. `cd ~/` (goes to home directory)
 
-2. `sudo nano /etc/rc.local`
+2. `sudo nano /etc/profile`
 
-3. `~/slideshow/slideshow` (copy and paste this line into rc.local file)
+3. `bash slideshow/slideshow` (copy and paste this line to the bottom of profile file)
+
+4. `sudo reboot`
