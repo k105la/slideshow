@@ -27,8 +27,17 @@ a folder and displays them in a slideshow. **RaspberryPi operating system must b
 
 1. `cd ~/` (goes to home directory)
 
-2. `sudo nano /etc/profile`
+2. `mkdir /home/pi/.config/autostart`
 
-3. `bash slideshow/slideshow` (copy and paste this line to the bottom of profile file)
+3. `nano /home/pi/.config/autostart/slideshow.desktop`
+
+Copy the following code to **slideshow.desktop**.
+```
+[Desktop Entry]
+Type=Application
+Name=Slideshow
+Exec=lxterminal -e /home/pi/slideshow/slideshow
+```
+Save and exit **slideshow.desktop**.
 
 4. `sudo reboot`
