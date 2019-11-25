@@ -18,7 +18,7 @@ a folder and displays them in a slideshow. **RaspberryPi operating system must b
 	
 4. `./slideshow` (quick test remember to have a usb drive with pictures stored in a folder named **usb** plugged into the RaspberryPi)
 
-![](docs/static_imgs/uuid_menu.png)
+![](docs/static_imgs/uuid_menu2.png)
 
 
 ## Run bash script on RaspberryPi start up
