@@ -2,6 +2,7 @@
 
 cd ~/
 
+figlet slideshow # Generates title banner 
 echo "Select USB Drive's UUID"
 sleep 5 # Wait for USB drive to mount
 blkid -s UUID -o value > uuid_scan_results.txt 
