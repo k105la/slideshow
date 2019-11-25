@@ -1,8 +1,7 @@
 #!/bin/bash
 
 cd ~/
-
-figlet slideshow # Generates title banner 
+figlet -c slideshow # Generates title banner 
 echo "Select USB Drive's UUID"
 sleep 5 # Wait for USB drive to mount
 blkid -s UUID -o value > uuid_scan_results.txt 
@@ -11,7 +10,7 @@ UUID_FILE=$(cat uuid_scan_results.txt)
 i=1
 for j in $UUID_FILE
 do
-	echo "$i) $j"
+	echo " $i) $j"
 	uuid[i]=$j
 	i=$(( i + 1 ))
 done
