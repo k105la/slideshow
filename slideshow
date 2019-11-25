@@ -15,7 +15,7 @@ slideshow() {
 	echo Images have been copied from usb drive to ~/Desktop/pictures
 	# Run eog command to start slideshow
 	eog --slide-show ~/Desktop/pictures
-    # unmounts usb drive
+    	# unmounts usb drive
 	sudo umount ~/usb_drive
 	echo usb drive has been unmounted!
 }
