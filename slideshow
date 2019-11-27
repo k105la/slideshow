@@ -7,17 +7,20 @@ sleep 5 # Wait for USB drive to mount
 sudo blkid -s UUID -o value > uuid_scan_results.txt 
 UUID_FILE=$(cat uuid_scan_results.txt)
 
+sudo lsusb > ~/lsusb.txt
+numofusb=`cat lsusb.txt | wc -l`
+
 slideshow() {
 	# mounts usb drive
 	sudo mount --uuid ${uuid[$input]} ~/usb_drive
 	# copies images into new folder
 	sudo mv ~/usb_drive/usb/*.jpg ~/Desktop/pictures 
-	echo Images have been copied from usb drive to ~/Desktop/pictures
+	echo "Images have been copied from usb drive to ~/Desktop/pictures"
 	# Run eog command to start slideshow
 	eog --slide-show ~/Desktop/pictures
     	# unmounts usb drive
 	sudo umount ~/usb_drive
-	echo usb drive has been unmounted!
+	echo "usb drive has been unmounted!"
 }
 
 i=1
@@ -31,12 +34,24 @@ done
 read -p "Enter number: " input
 echo "You select the UUID: ${uuid[$input]}"
 
-# check if ~/usb_drive exist 
-if [ -d ~/usb_drive ] 
+
+if [ $numofusb -ge 2 ]
 then
-	slideshow
+# check if ~/usb_drive exist 
+  if [ -d ~/usb_drive ] 
+  then
+	  slideshow
+  else
+	  # else if usb drive does not exist
+	  sudo mkdir ~/usb_drive && echo "~/usb_drive directory has been made!"
+	  slideshow	
+  fi
 else
-	# else if usb drive does not exist
-	sudo mkdir ~/usb_drive && echo ~/usb_drive directory has been made!
-	slideshow	
+  if [ -d ~/usb_drive ]
+  then
+    eog --slide-show ~/Desktop/pictures
+  else
+    sudo mkdir ~/usb_drive && echo "~/usb_drive directory has been made!"
+    eog --slide-show ~/Desktop/pictures
+  fi
 fi
