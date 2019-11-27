@@ -24,7 +24,7 @@ uuidmenu() {
 }
 
 slideshow() {
-	uuid_menu
+	uuidmenu
 	# mounts usb drive
 	sudo mount --uuid ${uuid[$input]} ~/usb_drive
 	# copies images into new folder
@@ -36,8 +36,8 @@ slideshow() {
 	sudo umount ~/usb_drive
 	echo "usb drive has been unmounted!"
 }
-
-if [ $numofusb -ge 2 ]
+# check if the number of listed usb devices is greater 3  
+if [ $numofusb -gt 3 ]
 then
 # check if ~/usb_drive exist 
   if [ -d ~/usb_drive ] 
@@ -49,11 +49,7 @@ then
 	  slideshow	
   fi
 else
-  if [ -d ~/usb_drive ]
-  then
-    eog --slide-show ~/Desktop/pictures
-  else
-    sudo mkdir ~/usb_drive && echo "~/usb_drive directory has been made!"
+    echo "No USB Drive connect!" 
     eog --slide-show ~/Desktop/pictures
   fi
 fi
