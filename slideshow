@@ -10,6 +10,7 @@ sudo lsusb > ~/lsusb.txt
 numofusb=`cat lsusb.txt | wc -l`
 
 uuidmenu() {
+	echo "Select USB Drive's UUID"
 	i=1
 	for j in $UUID_FILE
 	do
@@ -23,7 +24,6 @@ uuidmenu() {
 }
 
 slideshow() {
-	echo "Select USB Drive's UUID"
 	uuid_menu
 	# mounts usb drive
 	sudo mount --uuid ${uuid[$input]} ~/usb_drive
