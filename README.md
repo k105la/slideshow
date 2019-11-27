@@ -3,6 +3,8 @@
 A small bash script that takes JPG pictures from a USB drive and stores them in
 a folder and displays them in a slideshow. **RaspberryPi operating system must be running Raspbian with desktop.**
 
+Note: Open applications menu. Preferences > Screensaver > Display Modes > Mode: **Disable Screen Saver**
+
 ## Installation/Setup
 
 1. `git clone https://github.com/akilhylton/slideshow.git`
