@@ -2,7 +2,6 @@
 
 cd ~/
 figlet -c slideshow # Generates title banner 
-echo "Select USB Drive's UUID"
 sleep 5 # Wait for USB drive to mount
 sudo blkid -s UUID -o value > uuid_scan_results.txt 
 UUID_FILE=$(cat uuid_scan_results.txt)
@@ -10,7 +9,22 @@ UUID_FILE=$(cat uuid_scan_results.txt)
 sudo lsusb > ~/lsusb.txt
 numofusb=`cat lsusb.txt | wc -l`
 
+uuidmenu() {
+	i=1
+	for j in $UUID_FILE
+	do
+		echo " $i) $j"
+		uuid[i]=$j
+		let i++
+	done
+
+	read -p "Enter number: " input
+	echo "You select the UUID: ${uuid[$input]}"
+}
+
 slideshow() {
+	echo "Select USB Drive's UUID"
+	uuid_menu
 	# mounts usb drive
 	sudo mount --uuid ${uuid[$input]} ~/usb_drive
 	# copies images into new folder
@@ -22,18 +36,6 @@ slideshow() {
 	sudo umount ~/usb_drive
 	echo "usb drive has been unmounted!"
 }
-
-i=1
-for j in $UUID_FILE
-do
-	echo " $i) $j"
-	uuid[i]=$j
-	let i++
-done
- 
-read -p "Enter number: " input
-echo "You select the UUID: ${uuid[$input]}"
-
 
 if [ $numofusb -ge 2 ]
 then
