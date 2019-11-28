@@ -37,7 +37,7 @@ slideshow() {
 	echo "usb drive has been unmounted!"
 }
 # check if the number of listed usb devices is greater 3  
-if [ $numofusb -gt 3 ]
+if [ $numofusb -gt 4 ]
 then
 # check if ~/usb_drive exist 
   if [ -d ~/usb_drive ] 
@@ -52,4 +52,3 @@ else
     echo "No USB Drive connect!" 
     eog --slide-show ~/Desktop/pictures
   fi
-fi
